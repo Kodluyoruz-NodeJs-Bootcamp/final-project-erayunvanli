@@ -1,0 +1,26 @@
+<nav
+  class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1"
+>
+  <h1 class="site-title">
+    <a href="/"> <em class="fa fa-rocket"></em> Gusto Proje</a>
+  </h1>
+
+  <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+    <em class="fa fa-bars"></em>
+  </a>
+
+  <ul class="nav nav-pills flex-column sidebar-nav">
+    <%- include('_nav-item.ejs', { page: 'dashboard', url: '/', title:
+    'Profile', icon: 'fa-chart-line'}) %> <%- include('_nav-item.ejs', { page:
+    'movies', url: '/movies', title: 'My Favorite Movie', icon: 'fa-tags'}) %>
+    <%- include('_nav-item.ejs', { page: 'myFavoriteActors', url: '/actors',
+    title: 'My Favorite Actors', icon: 'fa-tags'}) %> <%-
+    include('_nav-item.ejs', { page: 'showMovies', url: '/showMovies', title:
+    'Movies', icon: 'fa-cube'}) %> <%- include('_nav-item.ejs', { page:
+    'customers', url: '/showActors', title: 'Actors', icon: 'fa-address-book'})
+    %>
+  </ul>
+  <a href="/logout" class="logout-button"
+    ><em class="fa fa-power-off"></em> Signout</a
+  >
+</nav>

@@ -1,0 +1,35 @@
+<% style = isUpdate ? 'success' : 'primary' %> <% submitText = isUpdate ?
+'Update' : 'Submit' %> <% if (isUpdate) { %>
+<form action="/movies/<%= movie.id %>?_method=PUT" method="post">
+  <% } else { %>
+  <form action="/movies" method="post">
+    <% } %>
+    <div class="form-group">
+      <label for="movie-form-name">Name</label>
+      <input
+        id="movie-form-name"
+        type="text"
+        class="form-control"
+        placeholder="Enter Movie Name"
+        name="name"
+        minLength="2"
+        maxLength="70"
+        required
+        autofocus
+        value="<%= movie.name %>"
+      />
+    </div>
+    <div class="form-check">
+      <% var checked = movie.published ? 'checked' : '' %> <input
+      id="movie-form-published" type="checkbox" name="published" <%-"checked"
+      %>>
+      <label for="movie-form-published">Publish</label>
+    </div>
+    <input
+      type="submit"
+      class="btn btn-<%= style %>"
+      value="<%= submitText %>"
+    />
+    <a href="/movies" class="btn btn-link">Back</a>
+  </form>
+</form>

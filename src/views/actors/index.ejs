@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-12 text-right">
+    <a href="/actors/new" class="btn btn-primary btn-xs" role="button">New</a>
+  </div>
+</div>
+<br />
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th style="width: 5%">ID</th>
+          <th style="width: 25%">Name</th>
+          <th style="width: 40%">Published</th>
+          <th style="width: 30%">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% actors.forEach(c => { %>
+        <tr>
+          <td scope="row"><%= c.id %></td>
+          <td><%= c.name %></td>
+          <td><%= c.published %></td>
+          <td>
+            <a
+              href="/actors/<%= c.id %>"
+              role="button"
+              class="btn btn-light btn-xs"
+              >Show</a
+            >
+            <a
+              href="/actors/<%= c.id %>/edit"
+              role="button"
+              class="btn btn-success btn-xs"
+              >Edit</a
+            >
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>

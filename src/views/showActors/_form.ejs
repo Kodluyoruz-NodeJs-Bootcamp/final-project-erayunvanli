@@ -1,0 +1,46 @@
+<% style = isUpdate ? 'success' : 'primary' %> <% submitText = isUpdate ?
+'Update' : 'Submit' %> <% if (isUpdate) { %>
+<form action="/showActors/<%= showActor.id %>?_method=PUT" method="post">
+  <% } else { %>
+  <form action="/showActors" method="post">
+    <% } %>
+    <div class="form-group">
+      <label for="showActor-form-name">Comment</label>
+      <input
+        id="showActor-form-name"
+        type="text"
+        class="form-control"
+        placeholder="Enter Movie Name"
+        name="comment"
+        minLength="2"
+        maxLength="70"
+        required
+        autofocus
+        value="<%= showActor.comment %>"
+      />
+    </div>
+    <input
+      type="submit"
+      class="btn btn-<%= style %>"
+      value="<%= submitText %>"
+    />
+
+    <div class="form-group">
+      <label for="showActor-form-actors">Actors</label>
+      <select
+        id="showActor-form-actors"
+        multiple
+        name="actors[]"
+        class="form-control"
+      >
+        <% actors.forEach(c => { %> <% selected = '' %> <% if(isUpdate) { %> <%
+        selected = showActor.actors.findIndex(p => p.id === c.id) >= 0 ?
+        "selected" : '' %> <% } %>
+        <option value="<%= c.id %>" <%="selected" %>> <%= c.name %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <a href="/showActors" class="btn btn-link">Back</a>
+  </form>
+</form>

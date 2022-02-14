@@ -1,0 +1,47 @@
+<% style = isUpdate ? 'success' : 'primary' %> <% submitText = isUpdate ?
+'Update' : 'Submit' %> <% if (isUpdate) { %>
+<form action="/showMovies/<%= showMovie.id %>?_method=PUT" method="post">
+  <% } else { %>
+  <form action="/showMovies" method="post">
+    <% } %>
+    <div class="form-group">
+      <label for="showMovie-form-name">Comment</label>
+      <input
+        id="showMovie-form-name"
+        type="text"
+        class="form-control"
+        placeholder="Enter Comment"
+        name="comment"
+        minLength="2"
+        maxLength="70"
+        required
+        autofocus
+        value="<%= showMovie.comment %>"
+      />
+    </div>
+
+    <!-- Checkboxes -->
+    <div class="form-group">
+      <label for="showMovie-form-movies">Movies</label>
+      <select
+        id="showMovie-form-movies"
+        multiple
+        name="movies[]"
+        class="form-control"
+      >
+        <% movies.forEach(c => { %> <% selected = '' %> <% if(isUpdate) { %> <%
+        selected = showMovie.movies.findIndex(p => p.id === c.id) >= 0 ?
+        "selected" : '' %> <% } %>
+        <option value="<%= c.id %>" <%="selected" %>> <%= c.name %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <input
+      type="submit"
+      class="btn btn-<%= style %>"
+      value="<%= submitText %>"
+    />
+    <a href="/showMovies" class="btn btn-link">Back</a>
+  </form>
+</form>
